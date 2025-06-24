@@ -13,6 +13,9 @@
     "prod:logs": "pm2 logs coupon-server",
     "prod:list": "pm2 list"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "repository": "git@github.com:alefrodrigues538/coupon-server.git",
   "author": "Alef F R Santos",
   "license": "ISC",
