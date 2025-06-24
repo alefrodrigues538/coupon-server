@@ -1,8 +1,12 @@
 # netlify.toml
 
 [build]
+  command = "npm run build"
   functions = "dist/.netlify/functions"
-  publish = "dist"
+  publish = "public"
+  
+[build.environment]
+  NODE_VERSION = "20"
 
 [[redirects]]
   force = true
