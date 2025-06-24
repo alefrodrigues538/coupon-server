@@ -1,13 +1,8 @@
 # netlify.toml
 
 [build]
-  command = "yarn install && yarn build" # Roda yarn install PRIMEIRO, depois yarn build
-  functions = "dist/.netlify/functions"  # Pasta onde a Netlify encontrará suas funções compiladas (após o build)
-  publish = "dist"                       # Mantive publish aqui, ele é necessário para o deploy
-
-[functions]
-  external_node_modules = ["express", "mongoose", "bcryptjs", "jsonwebtoken", "cors", "dotenv", "class-validator"]
-  node_bundler = "esbuild"
+  functions = "dist/.netlify/functions"
+  publish = "dist"
 
 [[redirects]]
   force = true
