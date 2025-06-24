@@ -3,16 +3,11 @@
   functions = "dist"     # Pasta onde a Netlify encontrará suas funções compiladas (após o build)
   publish = "dist"       # A pasta que será publicada como seu site estático (não relevante para API, mas necessário)
 
+[functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
 [[redirects]]
+  force = true
   from = "/api/*"
-  to = "/.netlify/functions/api/:splat" # Redireciona tudo de /api/ para a sua função 'api'
-  status = 200                           # Retorna 200 para que a função seja acionada
-  force = true                           # Garante que o redirecionamento aconteça
-
-# Configurações para deploy local com Netlify CLI
-[dev]
-  framework = "#custom" # Indica que você está usando uma configuração personalizada
-  command = "yarn dev"  # Usa o comando 'yarn dev' para desenvolvimento local
-  targetPort = 3000     # A porta que seu servidor de desenvolvimento escuta
-  publish = "dist"
-  functions = "dist"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
