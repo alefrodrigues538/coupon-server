@@ -14,7 +14,7 @@
     "prod:list": "pm2 list"
   },
   "engines": {
-    "node": "20.x"
+    "node": "20.19.3"
   },
   "repository": "git@github.com:alefrodrigues538/coupon-server.git",
   "author": "Alef F R Santos",
