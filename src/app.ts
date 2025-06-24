@@ -38,3 +38,5 @@ export class App {
     });
   }
 }
+
+export const appInstance = new App();

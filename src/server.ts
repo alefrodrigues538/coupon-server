@@ -1,14 +1,6 @@
-// src/server.ts
-import { App } from './app';
+// src/server.ts (ideal para Vercel)
+import { appInstance } from './app';
 import { env } from './config/environment';
 
-if (process.env.NODE_ENV !== 'production') {
-  const appInstance = new App();
-  const PORT = env.PORT || 3001;
-
-  try {
-    appInstance.listen(PORT);
-  } catch (error) {
-    console.log(`[Error on development server running]: ${error}`);
-  }
-}
+const PORT = env.PORT || 3000;
+appInstance.listen(PORT);
