@@ -1,9 +1,9 @@
 # netlify.toml
 
 [build]
-  command = "yarn install && yarn build"
-  functions = ".netlify/functions"
+  functions = "dist/functions"
   publish = "dist"
+  command = "yarn install && yarn build"
 
 [build.environment]
   NODE_VERSION = "20.12.2"
@@ -17,11 +17,3 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/api/:splat"
-
-# Configurações para deploy local com Netlify CLI (mantendo como antes)
-[dev]
-  framework = "#custom"
-  command = "yarn dev"
-  targetPort = 3000
-  publish = "dist"
-  functions = "dist/.netlify/functions" # Ajustei para ser consistente com o build
