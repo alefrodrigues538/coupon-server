@@ -1,7 +1,7 @@
 # netlify.toml
 
 [build]
-  functions = "dist/functions"
+  functions = "dist/.netlify/functions"
   publish = "dist"
   command = "yarn install && yarn build"
 
