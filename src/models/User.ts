@@ -1,8 +1,9 @@
 import bcrypt from 'bcrypt';
-import { Document, Schema, model } from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 
 // Define uma interface para o seu documento Mongoose (opcional, mas recomendado para tipagem)
 export interface IUser extends Document {
+  _id: Types.ObjectId;
   name: string;
   email: string;
   password?: string;

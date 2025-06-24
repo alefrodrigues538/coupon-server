@@ -20,7 +20,6 @@ export class App {
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
     this.server.use(corsMiddleware);
-    // Adicionar outros middlewares globais aqui, como loggers ou tratamento de erros
   }
 
   private async initializeDatabase(): Promise<void> {

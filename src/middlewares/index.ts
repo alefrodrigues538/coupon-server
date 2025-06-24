@@ -1,4 +1,3 @@
-// src/middlewares/index.ts
-export * from './cors';
-export * from './errorHandler';
-// exporte outros middlewares aqui
+export * from './auth.middleware';
+export * from './cors.middleware';
+export * from './errorHandler.middleware';
