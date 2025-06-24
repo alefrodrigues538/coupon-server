@@ -1,8 +1,14 @@
 // src/server.ts
 import { App } from './app';
-import { env } from './config/environment'; // Importa as variáveis de ambiente
+import { env } from './config/environment';
 
-const appInstance = new App();
-const PORT = env.PORT || 3001; // Usa a porta das variáveis de ambiente
+if (process.env.NODE_ENV !== 'production') {
+  const appInstance = new App();
+  const PORT = env.PORT || 3001;
 
-appInstance.listen(PORT);
+  try {
+    appInstance.listen(PORT);
+  } catch (error) {
+    console.log(`[Error on development server running]: ${error}`);
+  }
+}

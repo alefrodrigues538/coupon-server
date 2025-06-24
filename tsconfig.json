@@ -8,11 +8,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "emitDecoratorMetadata": true, // Adicione se estiver usando decoradores TypeORM/Class-Validator heavily
-    "experimentalDecorators": true // Adicione se estiver usando decoradores TypeORM/Class-Validator heavily
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
-  "include": [
-    "src/**/*" // Garante que todos os arquivos em src sejam compilados
-  ],
+  "include": ["src/**/*.ts", "src/netlify/functions/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -18,6 +18,7 @@
   "license": "ISC",
   "keywords": [],
   "dependencies": {
+    "@netlify/functions": "^4.1.6",
     "bcrypt": "^6.0.0",
     "class-validator": "^0.14.2",
     "cors": "^2.8.5",
@@ -26,6 +27,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.0",
     "reflect-metadata": "^0.2.2",
+    "serverless-http": "^3.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
