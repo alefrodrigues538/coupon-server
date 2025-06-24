@@ -1,46 +1,58 @@
-// src/controllers/user.controller.ts
+
 import { Request, Response } from 'express';
-import { AppDataSource } from '../config/database';
-import { User } from '../models/user.model';
+import { IUser, User } from '../models/User';
 
 export class UserController {
-  private userRepository = AppDataSource.getRepository(User);
+  constructor() {
+    // Amarra o 'this' de cada método ao contexto da instância do UserController
+    this.getAllUsers = this.getAllUsers.bind(this);
+    // this.getUserById = this.getUserById.bind(this);
+    this.createUser = this.createUser.bind(this);
+  }
 
-  async getAllUsers(req: Request, res: Response): Promise<Response> {
+  async getAllUsers(req: Request, res: Response): Promise<void> {
     try {
-      const users = await this.userRepository.find();
-      return res.status(200).json(users);
+      await User.find().then((data) => {
+        res.status(200).json(data)
+      }).catch((err) => {
+        res.status(err.status).json(err)
+      })
     } catch (error) {
       console.error("Error getting users:", error);
-      return res.status(500).json({ message: "Error retrieving users" });
+      res.status(500).json({ message: "Error retrieving users" });
     }
   }
 
-  async getUserById(req: Request, res: Response): Promise<Response> {
+  async getUserById(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
     try {
-      const user = await this.userRepository.findOneBy({ id: id as any });
+      const user: IUser | null = await User.findById(id).select('-password');
       if (!user) {
-        return res.status(404).json({ message: "User not found" });
+        res.status(404).json({ message: "User not found" });
       }
-      return res.status(200).json(user);
+      res.status(200).json(user);
     } catch (error) {
       console.error("Error getting user by ID:", error);
-      return res.status(500).json({ message: "Error retrieving user" });
+      res.status(500).json({ message: "Error retrieving user" });
     }
   }
 
-  async createUser(req: Request, res: Response): Promise<Response> {
+  async createUser(req: Request, res: Response): Promise<void> {
     const { name, email, password } = req.body;
     try {
-      const newUser = this.userRepository.create({ name, email, password });
-      await this.userRepository.save(newUser);
-      return res.status(201).json(newUser);
-    } catch (error) {
+      const newUser: IUser = new User({ name, email, password });
+      await newUser.save().then(() => {
+        const { password: _, ...userWithoutPassword } = newUser.toObject();
+        res.status(201).json(userWithoutPassword);
+      })
+    } catch (error: any) {
       console.error("Error creating user:", error);
-      return res.status(500).json({ message: "Error creating user" });
+      if (error.code === 11000) {
+        res.status(409).json({ message: "Email already registered." });
+      }
+      res.status(500).json({ message: "Error creating user", error: error.message });
     }
   }
-
-  // Implemente update, delete, etc.
 }
+
+export const controller = new UserController();

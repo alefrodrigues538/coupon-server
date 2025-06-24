@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2016" /* Define o nível da linguagem de saída do JavaScript. */,
-    "module": "commonjs" /* Especifica o sistema de módulos a ser usado na saída. */,
-    "rootDir": "./src" /* Define a pasta raiz de onde os arquivos TypeScript serão lidos. */,
-    "outDir": "./dist" /* Especifica o diretório onde os arquivos JavaScript compilados serão emitidos. */,
-    "esModuleInterop": true /* Permite a interoperabilidade entre módulos CommonJS e ES. */,
-    "forceConsistentCasingInFileNames": true /* Garante que as importações e exportações respeitem a caixa dos nomes dos arquivos. */,
-    "strict": true /* Ativa todas as verificações rigorosas de tipo. */,
-    "skipLibCheck": true /* Pula a verificação de tipo de todos os arquivos de declaração (.d.ts). */
-  }
+    "target": "es2016",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true, // Adicione se estiver usando decoradores TypeORM/Class-Validator heavily
+    "experimentalDecorators": true // Adicione se estiver usando decoradores TypeORM/Class-Validator heavily
+  },
+  "include": [
+    "src/**/*" // Garante que todos os arquivos em src sejam compilados
+  ],
+  "exclude": ["node_modules", "dist"]
 }

@@ -11,9 +11,9 @@ interface Env {
 
 const getEnv = (): Env => {
   return {
-    PORT: parseInt(process.env.PORT || '3000', 10),
+    PORT: parseInt(process.env.PORT || '3001', 10),
     NODE_ENV: process.env.NODE_ENV || 'development',
-    DATABASE_URL: process.env.DATABASE_URL || 'mongodb://localhost:27017/mydatabase',
+    DATABASE_URL: process.env.MONGODB_URL_CONNECT || 'mongodb://localhost:27017/mydatabase',
     // Defina valores padrão ou lance erros se variáveis essenciais não existirem
   };
 };

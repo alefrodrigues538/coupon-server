@@ -1,11 +1,12 @@
-// src/routes/user.routes.ts
-import { Router } from 'express';
-import { UserController } from '../controllers/user.controller';
+import { Router } from "express";
+import { controller } from "../controllers/user.controller";
 
-const userRouter = Router();
-const userController = new UserController();
+const userRouter: Router = Router()
 
-userRouter.get('/', userController.getAllUsers);
+//Routes
+userRouter.get("/api/users", controller.getAllUsers)
+userRouter.get("/api/user/:id", controller.getUserById)
+userRouter.post("/api/user", controller.createUser)
 
 export { userRouter };
 

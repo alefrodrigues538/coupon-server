@@ -1,7 +1,6 @@
-// src/app.ts
 import dotenv from "dotenv";
 import express from "express";
-import { AppDataSource } from "./config/database";
+import { connectDatabase } from "./config/database";
 import { corsMiddleware } from "./middlewares";
 import * as routes from "./routes";
 
@@ -21,16 +20,11 @@ export class App {
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
     this.server.use(corsMiddleware);
+    // Adicionar outros middlewares globais aqui, como loggers ou tratamento de erros
   }
 
   private async initializeDatabase(): Promise<void> {
-    try {
-      await AppDataSource.initialize();
-      console.log('Database connected successfully!');
-    } catch (err) {
-      console.error("Error during Data Source initialization", err);
-      process.exit(1);
-    }
+    await connectDatabase(); // Chama a função de conexão do Mongoose
   }
 
   private setupRoutes(): void {
