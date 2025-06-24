@@ -2,7 +2,7 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { IUser, User } from '../models/User';
-import { jwtService } from '../services/JWT.service';
+import { jwtService } from '../services/jwt';
 
 export class AuthController {
   constructor() {

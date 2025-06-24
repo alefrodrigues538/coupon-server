@@ -11,6 +11,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*.ts", "src/netlify/functions/**/*.ts"],
+  "include": ["src/**/*", "src/netlify/functions/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

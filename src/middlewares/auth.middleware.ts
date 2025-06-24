@@ -1,6 +1,6 @@
 // src/middlewares/auth.middleware.ts
 import { NextFunction, Request, Response } from 'express';
-import { jwtService, TokenPayload } from '../services/JWT.service';
+import { jwtService, TokenPayload } from '../services/jwt';
 
 // Estendendo a interface Request do Express para adicionar o 'user'
 declare global {
