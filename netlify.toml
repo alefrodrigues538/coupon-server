@@ -2,7 +2,8 @@
 
 [build]
   command = "yarn install && yarn build"
-  functions = "dist/.netlify/functions"
+  functions = ".netlify/functions"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20.12.2"
