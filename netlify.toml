@@ -1,7 +1,6 @@
 [build]
   command = "yarn build" # Comando para compilar seu TypeScript para JavaScript
-  functions = "dist"     # Pasta onde a Netlify encontrará suas funções compiladas (após o build)
-  publish = "dist"       # A pasta que será publicada como seu site estático (não relevante para API, mas necessário)
+  functions = "dist/.netlify/functions"     # Pasta onde a Netlify encontrará suas funções compiladas (após o build)
 
 [functions]
   external_node_modules = ["express"]
