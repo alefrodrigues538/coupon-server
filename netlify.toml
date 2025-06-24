@@ -2,7 +2,7 @@
 
 [build]
   command = "yarn install && yarn build"
-  functions = "dist/.netlify/functions"
+  functions = "dist/.netlify"
 
 [build.environment]
   NODE_VERSION = "20.12.2"
@@ -10,7 +10,7 @@
 [functions]
   external_node_modules = ["express"]
   node_bundler = "esbuild"
-  
+
 [[redirects]]
   force = true
   from = "/api/*"
