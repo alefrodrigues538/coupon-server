@@ -1,7 +1,7 @@
 # netlify.toml
 
 [build]
-  command = "npm run build"
+  command = "yarn install && yarn build"
   functions = "dist/.netlify/functions"
   publish = "public"
 
