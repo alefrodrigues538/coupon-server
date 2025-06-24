@@ -1,12 +1,24 @@
+# netlify.toml
+
 [build]
-  command = "yarn build" # Comando para compilar seu TypeScript para JavaScript
-  functions = "dist/.netlify/functions"     # Pasta onde a Netlify encontrará suas funções compiladas (após o build)
+  command = "yarn install && yarn build" # Roda yarn install PRIMEIRO, depois yarn build
+  functions = "dist/.netlify/functions"  # Pasta onde a Netlify encontrará suas funções compiladas (após o build)
+  publish = "dist"                       # Mantive publish aqui, ele é necessário para o deploy
 
 [functions]
-  external_node_modules = ["express"]
+  external_node_modules = ["express", "mongoose", "bcryptjs", "jsonwebtoken", "cors", "dotenv", "class-validator"]
   node_bundler = "esbuild"
+
 [[redirects]]
   force = true
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/api/:splat"
+
+# Configurações para deploy local com Netlify CLI (mantendo como antes)
+[dev]
+  framework = "#custom"
+  command = "yarn dev"
+  targetPort = 3000
+  publish = "dist"
+  functions = "dist/.netlify/functions" # Ajustei para ser consistente com o build
